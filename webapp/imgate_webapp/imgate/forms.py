@@ -6,5 +6,5 @@ class ImgateForm(forms.ModelForm):
     新規データ登録画面用のフォーム定義
     """
     class Meta:
-        model = Kakeibo
+        model = Imgate
         fields = ['username', 'image']
