@@ -11,7 +11,7 @@ from .forms import LoginForm
 
 # Create your views here.
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-from .models import Imgate
+from . models import Imgate
 
 #一覧表示用のDjango標準ビュー(ListView)を承継して一覧表示用のクラスを定義
 class ImgateListView(ListView):
@@ -63,35 +63,38 @@ class Create_account(CreateView):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('/')
-        return render(request, 'create.html', {'form': form,})
+        return render(request, 'imgate/create.html', {'form': form, })
 
     def get(self, request, *args, **kwargs):
         form = UserCreateForm(request.POST)
-        return render(request, 'create.html', {'form': form,})
+        return render(request, 'imgate/create.html', {'form': form, })
 
 
 create_account = Create_account.as_view()
 
 
-class AccountLogin(View):
-    """ログインページ"""
-    def post(self, request, *arg, **kwargs):
+#ログイン機能
 
+class AccountLogin(LoginView):
+    """ログインページ"""
+    def post(self, request, *args, **kwargs):
         form = LoginForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             user = User.objects.get(username=username)
             login(request, user)
             return redirect('/')
-        return render(request, 'login.html', {'form': form, })
+        return render(request, 'imgate/imgate_mypage.html', {'form': form, })
 
 
     def get(self, request, *args, **kwargs):
         form = LoginForm(request.POST)
-        return render(request, 'login.html', {'form': form, })
+        return render(request, 'imgate/imgate_login.html', {'form': form, })
+
 
 account_login = AccountLogin.as_view()
 
+
 class Logout(LoginRequiredMixin, LogoutView):
     """ログアウトページ"""
-    template_name ='imgate/top.html'
+    template_name = 'imgate/top.html'

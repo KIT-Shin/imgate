@@ -9,7 +9,8 @@
 {% if form.errors  %}
     <p>ユーザーID, パスイメージが一致しません．</p>
     {% endif %}
-    <form method="POST" action="{% url 'imgate:imgate_login' %}">
+    <!--<form method="POST" action="{% url 'imgate:imgate_login' }">-->
+    <form method="POST" action="imgate/imgate_login">
       {% csrf_token %}
       <label>ユーザーID</label>
       {{ form.username }}
@@ -19,23 +20,23 @@
       {{ form.password.errors }}
 <!--<p>Hello</p>-->
 <!--<form action="program.php" method="post">-->
-  <!--<dl>-->
-   <!--<dt>ユーザー名</dt>-->
-   <!--<dd>-->
-    <!--<input type="text" name="your-name">-->
-   <!--</dd>-->
-   <!--<dt>パスイメージ</dt>-->
-   <!--<dd>-->
-    <!--<canvas id="canvas" style="margin: 0; border:solid 1px red"-->
-            <!--width="512" height="512"></canvas>-->
+          <dl>
+           <dt>ユーザー名</dt>
+           <dd>
+            <input type="text" name="your-name">
+           </dd>
+           <dt>パスイメージ</dt>
+           <dd>
+            <canvas id="canvas" style="margin: 0; border:solid 1px red"
+                    width="512" height="512"></canvas>
 
-    <!--<input type="hidden" name="pass-image">-->
-   <!--</dd>-->
-  <!--<dd>-->
-      <!--<input type="submit" id="button" value="ログイン">-->
-  <!--</dd>-->
-  <!--</dl>-->
-</form>
-<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+            <input type="hidden" name="pass-image">
+           </dd>
+          <dd>
+              <input type="submit" id="button" value="ログイン">
+          </dd>
+          </dl>
+    </form>
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
 </body>
 </html>

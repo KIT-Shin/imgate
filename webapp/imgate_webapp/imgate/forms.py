@@ -7,13 +7,13 @@ from django.contrib.auth.forms import (
 )
 
 
-class ImgateForm(forms.ModelForm):
-    """
-    新規データ登録画面用のフォーム定義
-    """
-    class Meta:
-        model = Imgate
-        fields = ['username', 'image']
+# class ImgateForm(forms.ModelForm):
+#     """
+#     新規データ登録画面用のフォーム定義
+#     """
+#     class Meta:
+#         model = Imgate
+#         fields = ['username', 'image']
 
 
 from django.contrib.auth.forms import UserCreationForm
@@ -27,8 +27,8 @@ class UserCreateForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
     class Meta:
-       model = User
-       fields = ("username", "password1", "password2",)
+        model = User
+        fields = ("username", "password1", "password2",)
 
 class LoginForm(AuthenticationForm):
     """ログインフォーム"""
