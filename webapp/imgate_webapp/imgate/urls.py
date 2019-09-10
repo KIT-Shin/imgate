@@ -10,6 +10,6 @@ urlpatterns = [
     path('imgate_login/', views.render_login, name='imgate_login'),
     path('imgate_mypage/', views.render_mypage, name='imgate_mypage'),
     path('', views.Top.as_view(), name='top'),
-    path('login/', views.Login.as_view(), name='login'),
+    path('login/', views.AccountLogin.as_view(), name='imgate_login'),
     path('logout/', views.Logout.as_view(), name='logout'),
 ]

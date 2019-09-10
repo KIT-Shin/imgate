@@ -1,4 +1,13 @@
-{% extends "register/base.html" %}
-{% block content %}
-<p>いらっしゃいませ</p>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ja">
+  <body>
+    {% if user.id  %}
+    <p>ログインしました．</p>
+    <p>こんにちは，{{ user.username }}さん</p>
+    <a href="{% url 'logout' %}">ログアウトする</a>
+    {% else %}
+    <a href="{% url 'login' %}">ログイン</a>
+    <a href="{% url 'create_account' %}">アカウント作成</a>
+    {% endif %}
+  </body>
+</html>
