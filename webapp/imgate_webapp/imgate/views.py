@@ -13,6 +13,11 @@ from .forms import LoginForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from . models import Imgate
 
+from django.http import HttpResponse
+
+
+
+
 #一覧表示用のDjango標準ビュー(ListView)を承継して一覧表示用のクラスを定義
 class ImgateListView(ListView):
    #利用するモデルを指定
@@ -62,7 +67,7 @@ class Create_account(CreateView):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/')
+            return redirect('/imgate/imgate_login/')
         return render(request, 'imgate/create.html', {'form': form, })
 
     def get(self, request, *args, **kwargs):
@@ -83,7 +88,7 @@ class AccountLogin(LoginView):
             username = form.cleaned_data.get('username')
             user = User.objects.get(username=username)
             login(request, user)
-            return redirect('/')
+            return redirect('/imgate/imgate_mypage/')
         return render(request, 'imgate/imgate_mypage.html', {'form': form, })
 
 
@@ -98,3 +103,10 @@ account_login = AccountLogin.as_view()
 class Logout(LoginRequiredMixin, LogoutView):
     """ログアウトページ"""
     template_name = 'imgate/top.html'
+
+def index(request):
+    str_out = ""
+    str_out += "<a href = '../'>Return</a><p />"
+    return render(request,"imgate/index.html")
+    # return HttpResponse(request, "index.html")
+

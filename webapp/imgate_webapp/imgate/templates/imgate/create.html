@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
+<head>
+    <link rel="stylesheet" href="../../static/css/create.css"/>
+</head>
+
   <body>
     <!--<form method="POST" action="{% url 'create' }">-->
     <form method="POST" action="/imgate/create/">
@@ -13,7 +17,7 @@
       <label>パスワード(確認)</label>
       {{ form.password2 }}
       {{ form.password2.errors }}
-      <button type = "submit">登録</button>
+      <button class="btn-gradient-radius" type = "submit">登録</button>
     </form>
   </body>
 </html>

@@ -1,10 +1,7 @@
 body{
     background-image: url("../img/wallpaper-key-photo-08.jpg");
-}
-
-.wall{
-    background-color: white;
-    opacity:0.5
+    font-size: large;
+    color: white;
 }
 
 .btn-gradient-radius {

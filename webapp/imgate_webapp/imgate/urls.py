@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import path
 from django.contrib.auth.views import logout
-
+from django.conf.urls import url
 
 from . import views
 
@@ -16,4 +16,5 @@ urlpatterns = [
     # path('login/', views.AccountLogin.as_view(), name='imgate_login'),
     # path('logout/', views.Logout.as_view(), name='logout'),
     path('logout/', logout, {'template_name': 'imgate/top.html'}, name='logout'),
+    path('index/', views.index, name='index'),
 ]
