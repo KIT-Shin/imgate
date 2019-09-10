@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,18 +7,29 @@
 
   <body>
     <!--<form method="POST" action="{% url 'create' }">-->
-    <form method="POST" action="/imgate/create/">
+    <form method="POST" action="/imgate/create/" onsubmit="convert()">
       {% csrf_token %}
       <label>ユーザーID</label>
       {{ form.username }}
       {{ form.username.errors }}
-      <label>パスワード</label>
-      {{ form.password1 }}
-      {{ form.password1.errors }}
-      <label>パスワード(確認)</label>
-      {{ form.password2 }}
-      {{ form.password2.errors }}
+      <!--<label>パスワード</label>-->
+      <!--{{ form.password1 }-->
+      <!--{{ form.password1.errors }-->
+      <!--<label>パスワード(確認)</label>-->
+      <!--{{ form.password2 }-->
+      <!--{{ form.password2.errors }-->
+        <dl>
+            <dt>パスイメージ</dt>
+           <dd>
+            <canvas id="canvas" style="margin: 0; border:solid 1px red"
+                    width="512" height="512"></canvas>
+
+            <input type="hidden" name="password1">
+            <input type="hidden" name="password2">
+           </dd>
+        </dl>
       <button class="btn-gradient-radius" type = "submit">登録</button>
     </form>
+    <script type="text/javascript" src="{% static 'js/create.js' %}"></script>
   </body>
 </html>
