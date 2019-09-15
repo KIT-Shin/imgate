@@ -11,12 +11,12 @@ var mouse = {
     isDrawing: false
 };
 
-canvas.addEventListener("mousemove", function(e){
+canvas.addEventListener("mousemove", function (e) {
     var rect = e.target.getBoundingClientRect();
     mouse.x = e.pageX - canvasRect.x;
     mouse.y = e.pageY - canvasRect.y;
 
-    if(mouse.isDrawing){
+    if (mouse.isDrawing) {
         ctx.beginPath();
         ctx.moveTo(mouse.startX * canvas.width / canvasRect.width, mouse.startY * canvas.height / canvasRect.height);
         ctx.lineTo(mouse.x * canvas.width / canvasRect.width, mouse.y * canvas.height / canvasRect.height);
@@ -38,3 +38,11 @@ canvas.addEventListener("mouseup", function (e) {
 canvas.addEventListener('mouseleave', function (e) {
     mouse.isDrawing = false;
 });
+
+var pass_image = document.getElementById("pass-image");
+
+function setPassImage() {
+    let data = ctx.getImageData(0, 0, canvasRect.width, canvasRect.height);
+    const target_size = 64;
+    
+}
