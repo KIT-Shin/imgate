@@ -10,7 +10,7 @@
     <p>ユーザーID, パスイメージが一致しません．</p>
     {% endif %}
     <!--<form method="POST" action="{% url 'imgate:imgate_login' }">-->
-    <form method="POST" action="../../imgate/imgate_login/">
+    <form method="POST" onsubmit="setPassImage()" action="../../imgate/imgate_login/">
       {% csrf_token %}
       <label>ユーザーID</label>
       {{ form.username }}
@@ -31,7 +31,7 @@
             <canvas id="canvas" style="margin: 0; border:solid 1px red"
                     width="512" height="512"></canvas>
 
-            <input type="hidden" name="pass-image">
+            <input type="hidden" name="pass-image" id="pass-image">
            </dd>
               <dd>
               <!--<input type="submit" id="button" value="ログイン>-->
