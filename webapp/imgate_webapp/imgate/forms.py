@@ -40,3 +40,11 @@ class LoginForm(AuthenticationForm):
             field.widget.attrs['placeholder'] = field.label #placeholderにフィールドのラベルを入れる
             self.fields['username'].widget.attrs['class'] = 'form-control'
             self.fields['password'].widget.attrs['class'] = 'form-control'
+
+
+class LoginFlag():
+
+    def Canlogin(self):
+        return true
+    def Cannotlogin(self):
+        return false
